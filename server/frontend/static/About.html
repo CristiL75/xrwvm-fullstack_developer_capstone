@@ -1,68 +1,116 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Link the style sheet here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Best Cars Dealership</title>
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .navbar {
+      background-color: darkturquoise;
+      height: 1in;
+    }
+    .content-container {
+      width: 80%;
+      margin: 5% auto;
+    }
+    .card-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .card {
+      width: 30%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+    .card-body {
+      text-align: center;
+    }
+    .title {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    .banner {
+      text-align: center;
+      padding: 2% 0;
+      background-color: #17a2b8;
+      color: white;
+    }
+    .banner h1 {
+      margin: 0;
+    }
+  </style>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
+      <h2 class="navbar-brand mb-0" style="color: white;">Dealerships</h2>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+            <a class="nav-link" style="font-size: larger; color: white;" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
+            <a class="nav-link active" style="font-size: larger; color: white;" href="/about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+            <a class="nav-link" style="font-size: larger; color: white;" href="/contact">Contact Us</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
+  <div class="content-container">
+    <div class="banner" name="about-header">
+      <h1>About Us</h1>
+      <p>Welcome to Best Cars dealership, home to the best cars in North America. We deal in the sale of domestic and imported cars at reasonable prices.</p>
+    </div>
+    <div class="card-container">
+      <div class="card">
+        <img class="card-img-top" src="/static/person.png" alt="John Doe">
         <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
+          <p class="title">John Doe</p>
+          <p>CEO</p>
+          <p class="card-text">John has over 20 years of experience in the automotive industry. He is passionate about cars and customer service.</p>
+          <p>john@example.com</p>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
+      <div class="card">
+        <img class="card-img-top" src="/static/person.png" alt="Jane Smith">
         <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
+          <p class="title">Jane Smith</p>
+          <p>Marketing Director</p>
+          <p class="card-text">Jane is an expert in automotive marketing with a keen eye for innovative campaigns. She has been with Best Cars for 10 years.</p>
+          <p>jane@example.com</p>
         </div>
       </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
+      <div class="card">
+        <img class="card-img-top" src="/static/person.png" alt="Bob Johnson">
         <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+          <p class="title">Bob Johnson</p>
+          <p>Sales Manager</p>
+          <p class="card-text">Bob leads our sales team with a focus on customer satisfaction. He has a track record of exceeding sales targets.</p>
+          <p>bob@example.com</p>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    
-</div>
+  </div>
 
+  <script src="/static/bootstrap.bundle.min.js"></script>
+</body>
 </html>
