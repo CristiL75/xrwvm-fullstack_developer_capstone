@@ -32,13 +32,15 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'cristianlatc-8000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
-    'cristianlatc-8080.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai'
+    'cristianlatc-8080.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    'cristianlatc-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai/admin/login/?next=/admin/'
 ]
 # settings.py
 
 CSRF_TRUSTED_ORIGINS = [
     'https://cristianlatc-8000.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
-    'https://cristianlatc-8080.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai'
+    'https://cristianlatc-8080.theianext-1-labs-prod-misc-tools-us-east-0.proxy.cognitiveclass.ai',
+    'https://cristianlatc-8000.theiadockernext-1-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
 ]
 
 
