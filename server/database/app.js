@@ -75,23 +75,10 @@ app.get('/fetchDealers/:state', async (req, res) => {
 // Express route to fetch dealer by a particular id
 app.get('/fetchDealer/:id', async (req, res) => {
   try {
-    let query;
-    if (mongoose.Types.ObjectId.isValid(req.params.id)) {
-      query = { _id: req.params.id };
-    } else if (!isNaN(req.params.id)) {
-      query = { id: Number(req.params.id) };
-    } else {
-      return res.status(400).json({ error: 'Invalid ID format' });
-    }
-
-    const document = await Dealerships.findOne(query);
-    if (document) {
-      res.json(document);
-    } else {
-      res.status(404).json({ error: 'Dealer not found' });
-    }
+    const documents = await Dealerships.find({ id: req.params.id });
+    res.json(documents);
   } catch (error) {
-    res.status(500).json({ error: 'Error fetching document' });
+    res.status(500).json({ error: 'Error fetching dealers by ID' });
   }
 });
 
