@@ -1,49 +1,44 @@
-from djangoapp.models import CarMake, CarModel
+from django.db import models
+# from django.utils.timezone import now
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-def initiate():
-    car_make_data = [
-        {"name": "NISSAN", "description": "Great cars. Japanese technology"},
-        {"name": "Mercedes", "description": "Great cars. German technology"},
-        {"name": "Audi", "description": "Great cars. German technology"},
-        {"name": "Kia", "description": "Great cars. Korean technology"},
-        {"name": "Toyota", "description": "Great cars. Japanese technology"},
+
+# Create your models here.
+
+class CarMake(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
+class CarModel(models.Model):
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    CAR_TYPES = [
+        ('SEDAN', 'Sedan'),
+        ('SUV', 'SUV'),
+        ('WAGON', 'Wagon'),
+        # Add more choices as required
     ]
+    type = models.CharField(max_length=10, choices=CAR_TYPES, default='SUV')
+    year = models.IntegerField(default=2023,
+                               validators=[
+                                   MaxValueValidator(2023),
+                                   MinValueValidator(2015)])
 
-    car_make_instances = []
-    for data in car_make_data:
-        # Check if CarMake with this name already exists
-        car_make, created = CarMake.objects.get_or_create(
-            name=data['name'],
-            defaults={'description': data['description']}
-        )
-        car_make_instances.append(car_make)
+    def __str__(self):
+        return self.name
 
-    car_model_data = [
-        {"name": "Pathfinder", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
-        {"name": "Qashqai", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
-        {"name": "XTRAIL", "type": "SUV", "year": 2023, "car_make": car_make_instances[0]},
-        {"name": "A-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},
-        {"name": "C-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},
-        {"name": "E-Class", "type": "SUV", "year": 2023, "car_make": car_make_instances[1]},
-        {"name": "A4", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
-        {"name": "A5", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
-        {"name": "A6", "type": "SUV", "year": 2023, "car_make": car_make_instances[2]},
-        {"name": "Sorrento", "type": "SUV", "year": 2023, "car_make": car_make_instances[3]},
-        {"name": "Carnival", "type": "SUV", "year": 2023, "car_make": car_make_instances[3]},
-        {"name": "Cerato", "type": "Sedan", "year": 2023, "car_make": car_make_instances[3]},
-        {"name": "Corolla", "type": "Sedan", "year": 2023, "car_make": car_make_instances[4]},
-        {"name": "Camry", "type": "Sedan", "year": 2023, "car_make": car_make_instances[4]},
-        {"name": "Kluger", "type": "SUV", "year": 2023, "car_make": car_make_instances[4]},
-        # Add more CarModel instances as needed
-    ]
 
-    for data in car_model_data:
-        # Add checks to avoid duplicates if necessary
-        CarModel.objects.get_or_create(
-            name=data['name'],
-            defaults={
-                'type': data['type'],
-                'year': data['year'],
-                'car_make': data['car_make']
-            }
-        )
+class Car(models.Model):
+    car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
+    color = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    mileage = models.PositiveIntegerField()
+    # Add other fields as needed
+
+    def __str__(self):
+        return f"{self.car_model.name} ({self.color})"
+
