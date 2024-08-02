@@ -38,7 +38,7 @@ def initiate():
     ]
 
     for data in car_model_data:
-        # You might want to add checks to avoid duplicates here if necessary
+        # Add checks to avoid duplicates if necessary
         CarModel.objects.get_or_create(
             name=data['name'],
             defaults={
