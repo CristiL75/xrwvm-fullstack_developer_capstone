@@ -1,9 +1,6 @@
-# Uncomment the following imports before adding the Model code
-
 from django.db import models
 # from django.utils.timezone import now
 from django.core.validators import MaxValueValidator, MinValueValidator
-
 
 # Create your models here.
 
@@ -32,6 +29,8 @@ class CarModel(models.Model):
 
     def __str__(self):
         return self.name
+
+
 class Car(models.Model):
     car_model = models.ForeignKey(CarModel, on_delete=models.CASCADE)
     color = models.CharField(max_length=50)
@@ -41,3 +40,4 @@ class Car(models.Model):
 
     def __str__(self):
         return f"{self.car_model.name} ({self.color})"
+
