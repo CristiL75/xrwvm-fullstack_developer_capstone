@@ -32,8 +32,8 @@ urlpatterns = [
 
     # Path for adding a review
     path(
-        'add_review/', 
-        views.add_review, 
+        'add_review/',
+        views.add_review,
         name='add_review'
     ),
 
@@ -46,8 +46,8 @@ urlpatterns = [
 
     # Path for get_cars view
     path(
-        'get_cars/', 
-        views.get_cars, 
+        'get_cars/',
+        views.get_cars,
         name='getcars'
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
