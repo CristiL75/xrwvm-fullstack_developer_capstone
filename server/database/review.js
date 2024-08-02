@@ -1,4 +1,4 @@
-/*jshint esversion: 8 */
+jshint esversion: 8 
 
 (function () {
   'use strict'; // Use strict mode to enforce ES6 standards within a function scope
