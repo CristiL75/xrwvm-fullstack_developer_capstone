@@ -21,9 +21,9 @@ const Dealerships = require('./dealership');
 (async () => {
   try {
     await Reviews.deleteMany({});
-    await Reviews.insertMany(reviews_data['reviews']);
+    await Reviews.insertMany(reviews_data.reviews); // Dot notation used here
     await Dealerships.deleteMany({});
-    await Dealerships.insertMany(dealerships_data['dealerships']);
+    await Dealerships.insertMany(dealerships_data.dealerships); // Dot notation used here
   } catch (error) {
     console.log('Error fetching documents:', error);
   }
@@ -89,7 +89,7 @@ app.post('/insert_review', express.raw({ type: '*/*' }), async (req, res) => {
   try {
     const data = JSON.parse(req.body);
     const documents = await Reviews.find().sort({ id: -1 });
-    let new_id = documents[0] ? documents[0]['id'] + 1 : 1;
+    let new_id = documents[0] ? documents[0].id + 1 : 1; // Dot notation used here
 
     const review = new Reviews({
       id: new_id,
