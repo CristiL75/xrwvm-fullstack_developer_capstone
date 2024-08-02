@@ -11,43 +11,51 @@ sentiment_analyzer_url = os.getenv(
     'sentiment_analyzer_url',
     default="http://localhost:5050/")
 
+# Add code for get requests to back end
+
 
 def get_request(endpoint, **kwargs):
     params = ""
     if kwargs:
-        params = "&".join(f"{key}={value}" for key, value in kwargs.items())
+        for key, value in kwargs.items():
+            params = params + key + "=" + value + "&"
 
-    request_url = f"{backend_url}{endpoint}?{params}"
+    request_url = backend_url + endpoint + "?" + params
 
-    print(f"GET from {request_url}")
+    print("GET from {} ".format(request_url))
     try:
+        # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
-        response.raise_for_status()  # Raise HTTPError for bad responses
         return response.json()
-    except requests.RequestException as err:
-        print(f"Unexpected {err=}, {type(err)=}")
-        print("Network exception occurred")
+    except Exception as e:
+        # If any error occurs
+        print(f"Network exception occurred: {e}")
+
+
+# Add code for retrieving sentiments
 
 
 def analyze_review_sentiments(text):
-    request_url = f"{sentiment_analyzer_url}analyze/{text}"
+    request_url = sentiment_analyzer_url + "analyze/" + text
     try:
+        # Call get method of requests library with URL and parameters
         response = requests.get(request_url)
-        response.raise_for_status()  # Raise HTTPError for bad responses
         return response.json()
-    except requests.RequestException as err:
+    except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
         print("Network exception occurred")
+
+
+# Add code for posting review
 
 
 def post_review(data_dict):
-    request_url = f"{backend_url}/insert_review"
+    request_url = backend_url + "/insert_review"
     try:
         response = requests.post(request_url, json=data_dict)
-        response.raise_for_status()  # Raise HTTPError for bad responses
         print(response.json())
         return response.json()
-    except requests.RequestException as err:
-        print(f"Unexpected {err=}, {type(err)=}")
-        print("Network exception occurred")
+    except Exception as e:
+        print(f"Network exception occurred: {e}")
 
+# Ensure the last line is blank.
