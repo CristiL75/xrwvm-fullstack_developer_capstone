@@ -46,7 +46,7 @@ urlpatterns = [
 
     # Path for get_cars view
     path(
-        'get_cars/',
+        'get_cars',
         views.get_cars,
         name='getcars'
     ),
